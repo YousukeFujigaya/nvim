@@ -94,6 +94,23 @@ require('lazy').setup {
   { 'tpope/vim-rhubarb', event = 'CmdlineEnter' }, -- Open the Git file in browser
   { 'tpope/vim-sleuth' }, -- Detect tabstop and shiftwidth automatically
 
+  -- Debug
+  {
+    'mfussenegger/nvim-dap',
+    -- NOTE: And you can specify dependencies as well
+    dependencies = {
+      -- Creates a beautiful debugger UI
+      { 'rcarriga/nvim-dap-ui' },
+
+      -- Installs the debug adapters for you
+      { 'williamboman/mason.nvim' },
+      { 'jay-babu/mason-nvim-dap.nvim' },
+
+      -- Add your own debuggers here
+      -- { 'leoluz/nvim-dap-go' },
+    },
+  },
+
   -- Optional
   -- { 'delphinus/auto-cursorline.nvim', opts = { wait_ms = 0.1 } },
   { 'dstein64/vim-startuptime', cmd = 'StartupTime' },

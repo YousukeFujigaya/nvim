@@ -3,13 +3,13 @@
 --   - https://learnxinyminutes.com/docs/lua/
 --   And then you can explore or search through `:help lua-guide`
 ---------------------------------------------------------------------------------------------
+-- User Options
+require 'user.options'
+require 'user.keymaps' -- NOTE: Must set before plugins are required (require '_lazy')
+---------------------------------------------------------------------------------------------
 -- Lazy Set Up
 require '_lazy'
 require 'plugins'
----------------------------------------------------------------------------------------------
--- User Options
-require 'user.options'
-require 'user.keymaps'
 ---------------------------------------------------------------------------------------------
 -- Colorscheme
 local theme = require 'user.theme'
@@ -38,6 +38,7 @@ require 'user.whichkey'
 require 'user.autocommands'
 require 'user.autoformat'
 require 'user.modes'
+require 'user.debug'
 ---------------------------------------------------------------------------------------------
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
