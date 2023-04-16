@@ -144,7 +144,10 @@ cmp.setup {
     native_menu = false,
   },
 }
+<<<<<<< HEAD
 
 -- -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 -- local capabilities = vim.lsp.protocol.make_client_capabilities()
 -- capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
+=======
+>>>>>>> 7fdd722fef170cf46932a5c1b424d00816df2270
