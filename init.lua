@@ -24,7 +24,7 @@ require('lazy').setup {
   ---------------------------------------------------------------------------------------------
   -- [[ User Plugins ]]
   -- Colorscheme
-  require 'user.colors.nightfox',
+  require 'user.colorscheme.nightfox',
   -- require 'user.colors.onedark',
 
   -- User Interface
@@ -44,7 +44,7 @@ require('lazy').setup {
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
 -- Colorscheme
-local theme = require 'user.theme'
+local theme = require 'user.colorscheme.theme'
 local colorscheme = theme.carbonfox
 local status_ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
 if not status_ok then

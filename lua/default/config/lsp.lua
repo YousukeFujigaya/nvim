@@ -58,12 +58,12 @@ local servers = {
       telemetry = { enable = false },
     },
   },
-  vimls = {}, -- 'vim-language-server'
-  bashls = {}, -- 'bash-language-server'
-  tsserver = {}, -- 'typescript-language-server'
-  html = {}, --'html-lsp'
-  cssls = {}, -- 'css-lsp'
-  jsonls = {}, --'json-lsp'
+  -- vimls = {}, -- 'vim-language-server'
+  -- bashls = {}, -- 'bash-language-server'
+  -- tsserver = {}, -- 'typescript-language-server'
+  -- html = {}, --'html-lsp'
+  -- cssls = {}, -- 'css-lsp'
+  -- jsonls = {}, --'json-lsp'
   -- pyright = {}, -- 'pyright'
   -- rust_analyzer = {}, -- 'rust-language-server'
 }
