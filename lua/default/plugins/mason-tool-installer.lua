@@ -15,13 +15,13 @@ return {
         -- Lsp
         'lua-language-server',
         'vim-language-server',
-        'typescript-language-server',
         'bash-language-server',
-        'pyright',
-        'rust-analyzer',
+        'typescript-language-server',
         'html-lsp',
         'css-lsp',
         'json-lsp',
+        'pyright',
+        'rust-analyzer',
 
         -- Formatter
         'prettier',

@@ -51,12 +51,6 @@ end
 --  Add any additional override configuration in the following tables. They will be passed to
 --  the `settings` field of the server config. You must look up that documentation yourself.
 local servers = {
-  -- clangd = {},
-  -- gopls = {},
-  -- pyright = {},
-  -- rust_analyzer = {},
-  -- tsserver = {},
-
   -- Lsp
   lua_ls = {
     Lua = {
@@ -64,21 +58,14 @@ local servers = {
       telemetry = { enable = false },
     },
   },
-  -- 'lua-language-server',
-  --   'vim-language-server',
-  --   'typescript-language-server',
-  --   'bash-language-server',
-  --   'pyright',
-  --   'rust-analyzer',
-  --   'html-lsp',
-  --   'css-lsp',
-  --   'json-lsp',
-
-  --   -- Formatter
-  --   'prettier',
-  --   'stylua',
-  --   'black',
-  --   'yamlfmt',
+  vimls = {}, -- 'vim-language-server'
+  bashls = {}, -- 'bash-language-server'
+  tsserver = {}, -- 'typescript-language-server'
+  html = {}, --'html-lsp'
+  cssls = {}, -- 'css-lsp'
+  jsonls = {}, --'json-lsp'
+  -- pyright = {}, -- 'pyright'
+  -- rust_analyzer = {}, -- 'rust-language-server'
 }
 
 -- Ensure the servers above are installed

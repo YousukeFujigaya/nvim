@@ -15,16 +15,17 @@ require '_lazy'
 require('lazy').setup {
   -- [[ Default Plugins ]]
   require 'default.plugins',
+  -- { import = 'test' }, -- New Plugin Test
 
   -- Options
   require 'default.plugins.mason-tool-installer', -- Automatically Installed plugins related Mason
-  require 'default.plugins.opts',
+  require 'default.plugins.options',
 
   ---------------------------------------------------------------------------------------------
   -- [[ User Plugins ]]
   -- Colorscheme
   require 'user.colors.nightfox',
-  require 'user.colors.onedark',
+  -- require 'user.colors.onedark',
 
   -- User Interface
   require 'user.plugins.modes',
@@ -38,7 +39,7 @@ require('lazy').setup {
   require 'user.plugins.debug',
   require 'user.plugins.alpha',
   require 'user.plugins.project',
-  -- require 'user.plugins.bbye',
+  require 'user.plugins.bbye',
 }
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
