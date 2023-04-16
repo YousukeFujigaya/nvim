@@ -3,13 +3,44 @@
 --   - https://learnxinyminutes.com/docs/lua/
 --   And then you can explore or search through `:help lua-guide`
 ---------------------------------------------------------------------------------------------
--- User Options
-require 'user.options'
-require 'user.keymaps' -- NOTE: Must set before plugins are required (require '_lazy')
+-- [[ User Options ]]
+require 'user.settings.options'
+require 'user.settings.keymaps' -- NOTE: Must set before plugins are required (require '_lazy')
 ---------------------------------------------------------------------------------------------
--- Lazy Set Up
+-- [[ Lazy Set Up ]]
 require '_lazy'
-require 'plugins'
+---------------------------------------------------------------------------------------------
+-- [[ Install Plugins ]]
+---------------------------------------------------------------------------------------------
+require('lazy').setup {
+  -- [[ Default Plugins ]]
+  require 'default.plugins',
+
+  -- Options
+  require 'default.plugins.mason-tool-installer', -- Automatically Installed plugins related Mason
+  require 'default.plugins.opts',
+
+  ---------------------------------------------------------------------------------------------
+  -- [[ User Plugins ]]
+  -- Colorscheme
+  require 'user.colors.nightfox',
+  require 'user.colors.onedark',
+
+  -- User Interface
+  require 'user.plugins.modes',
+  require 'user.plugins.lualine',
+  require 'user.plugins.bufferline',
+  require 'user.plugins.gitsigns',
+  require 'user.plugins.nvim-tree', -- TODO: keymapの変更
+
+  -- User Plugins
+  require 'user.plugins.impatient',
+  require 'user.plugins.debug',
+  require 'user.plugins.alpha',
+  require 'user.plugins.project',
+  -- require 'user.plugins.bbye',
+}
+---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
 -- Colorscheme
 local theme = require 'user.theme'
@@ -19,38 +50,19 @@ if not status_ok then
   return
 end
 ---------------------------------------------------------------------------------------------
--- Plugins
-require 'user.cmp'
-require 'user.lsp' -- TODO:
-require 'user.telescope'
-require 'user.gitsigns'
-require 'user.treesitter'
-require 'user.autopairs'
-require 'user.comment'
-require 'user.nvim-tree' -- TODO: keymapの変更
-require 'user.bufferline'
-require 'user.lualine'
-require 'user.indentline'
-require 'user.project'
--- require 'user.impatient'
-require 'user.alpha'
-require 'user.whichkey'
-require 'user.autocommands'
-require 'user.autoformat'
-require 'user.modes'
-require 'user.debug'
+-- [[ Configuration ]]
+require 'default.config.cmp'
+require 'default.config.lsp' -- TODO:
+require 'default.config.telescope'
+require 'default.config.treesitter'
+-- [[ User Settings ]]
+require 'user.settings.whichkey'
+require 'user.settings.indentline'
+require 'user.settings.autocommands'
+require 'user.settings.autopairs'
+require 'user.settings.autoformat'
+require 'user.settings.comment'
+require 'user.settings.highlight_on_yank'
 ---------------------------------------------------------------------------------------------
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
-})
----------------------------------------------------------------------------------------------
-
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

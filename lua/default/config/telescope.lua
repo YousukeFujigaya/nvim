@@ -108,10 +108,12 @@ telescope.setup {
   },
 }
 
+-- Extensions Load
 -- Enable telescope fzf native, if installed
 -- pcall(telescope.load_extentions, 'telescope-fzf-native')
 pcall(telescope.load_extentions, 'fzf')
 pcall(telescope.load_extentions, 'telescope-live-grep-args')
+pcall(telescope.load_extension, 'projects')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })

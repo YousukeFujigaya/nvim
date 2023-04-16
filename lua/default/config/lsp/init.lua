@@ -1,7 +1,4 @@
 -- LSP Configuration
----------------------------------------------------------------------------------------------
-require 'user.lsp.mason-tool-installer'
----------------------------------------------------------------------------------------------
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
