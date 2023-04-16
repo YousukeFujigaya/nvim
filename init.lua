@@ -51,11 +51,12 @@ if not status_ok then
   return
 end
 ---------------------------------------------------------------------------------------------
--- [[ Configuration ]]
+-- [[ Default Settings ]]
 require 'default.config.cmp'
 require 'default.config.lsp' -- TODO:
 require 'default.config.telescope'
 require 'default.config.treesitter'
+require 'default.config.null-ls'
 -- [[ User Settings ]]
 require 'user.settings.whichkey'
 require 'user.settings.indentline'
