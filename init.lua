@@ -19,8 +19,8 @@ require('lazy').setup {
 
   -- Options
   require 'default.plugins.mason-tool-installer', -- Automatically Installed plugins related Mason
+  require 'default.plugins.null-ls',
   require 'default.plugins.options',
-
   ---------------------------------------------------------------------------------------------
   -- [[ User Plugins ]]
   -- Colorscheme
@@ -35,7 +35,6 @@ require('lazy').setup {
   require 'user.plugins.nvim-tree', -- TODO: keymapの変更
 
   -- User Plugins
-  require 'user.plugins.impatient',
   require 'user.plugins.debug',
   require 'user.plugins.alpha',
   require 'user.plugins.project',
@@ -56,6 +55,7 @@ require 'default.config.cmp'
 require 'default.config.lsp' -- TODO:
 require 'default.config.telescope'
 require 'default.config.treesitter'
+-- require 'default.config.null-ls'
 -- [[ User Settings ]]
 require 'user.settings.whichkey'
 require 'user.settings.indentline'
