@@ -21,6 +21,7 @@ require('lazy').setup {
   require 'default.plugins.mason-tool-installer', -- Automatically Installed plugins related Mason
   require 'default.plugins.null-ls',
   require 'default.plugins.options',
+  require 'default.plugins.git',
   ---------------------------------------------------------------------------------------------
   -- [[ User Plugins ]]
   -- Colorscheme

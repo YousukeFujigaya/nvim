@@ -25,7 +25,7 @@ return {
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp', event = 'InsertEnter' },
       { 'hrsh7th/cmp-buffer', event = 'InsertEnter' }, -- buffer completions
-      { 'hrsh7th/cmp-path', event = 'InsertEnter' }, -- path completions
+      { 'hrsh7th/cmp-path', event = { 'InsertEnter', 'CmdlineEnter' } }, -- path completions
       { 'hrsh7th/cmp-cmdline', event = 'CmdlineEnter' }, -- command completions
       { 'L3MON4D3/LuaSnip', event = 'InsertEnter' }, -- snippet engine
       { 'saadparwaiz1/cmp_luasnip', event = 'InsertEnter' }, -- snippet completions
