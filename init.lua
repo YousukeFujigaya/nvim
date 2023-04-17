@@ -55,11 +55,7 @@ require 'default.config.cmp'
 require 'default.config.lsp' -- TODO:
 require 'default.config.telescope'
 require 'default.config.treesitter'
-<<<<<<< HEAD
--- require 'default.config.null-ls'
-=======
 require 'default.config.null-ls'
->>>>>>> 7fdd722fef170cf46932a5c1b424d00816df2270
 -- [[ User Settings ]]
 require 'user.settings.whichkey'
 require 'user.settings.indentline'
