@@ -6,27 +6,33 @@
 -- [[ User Options ]]
 require 'user.settings.options'
 require 'user.settings.keymaps' -- NOTE: Must set before plugins are required (require '_lazy')
+
+-- Colorscheme ------------------------------------------------------------------------------
+local user_theme = require('user.colorscheme').nightfox.carbonfox
 ---------------------------------------------------------------------------------------------
--- [[ Lazy Set Up ]]
+
+-- Lazy Set Up ------------------------------------------------------------------------------
 require '_lazy'
 ---------------------------------------------------------------------------------------------
--- [[ Install Plugins ]]
----------------------------------------------------------------------------------------------
+--   Install Plugins
 require('lazy').setup {
   -- [[ Default Plugins ]]
   require 'default.plugins',
-  -- { import = 'test' }, -- New Plugin Test
+  -- { import = 'test' }, -- A New Plugin Test
 
   -- Options
-  require 'default.plugins.mason-tool-installer', -- Automatically Installed plugins related Mason
-  require 'default.plugins.null-ls',
-  require 'default.plugins.options',
   require 'default.plugins.git',
-  ---------------------------------------------------------------------------------------------
+  require 'default.plugins.null-ls',
+  require 'default.plugins.mason-tool-installer', -- Automatically Installed for LSP
+  require 'default.plugins.options',
+
   -- [[ User Plugins ]]
   -- Colorscheme
   require 'user.colorscheme.nightfox',
-  -- require 'user.colors.onedark',
+  -- require 'user.colorscheme.onedark',
+  -- require 'user.colorscheme.tokyonight',
+  -- require 'user.colorscheme.vscode',
+  -- require 'user.colorscheme.darkplus',
 
   -- User Interface
   require 'user.plugins.modes',
@@ -35,28 +41,26 @@ require('lazy').setup {
   require 'user.plugins.gitsigns',
   require 'user.plugins.nvim-tree', -- TODO: keymapの変更
 
-  -- User Plugins
+  -- Optional Plugins
   require 'user.plugins.debug',
   require 'user.plugins.alpha',
   require 'user.plugins.project',
   require 'user.plugins.bbye',
 }
+
 ---------------------------------------------------------------------------------------------
+-- Settings  --------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
--- Colorscheme
-local theme = require 'user.colorscheme.theme'
-local colorscheme = theme.carbonfox
-local status_ok, _ = pcall(vim.cmd, 'colorscheme ' .. colorscheme)
-if not status_ok then
-  return
-end
----------------------------------------------------------------------------------------------
+-- [[ Set Colorscheme ]]
+vim.cmd('colorscheme ' .. user_theme)
+
 -- [[ Default Settings ]]
 require 'default.config.cmp'
 require 'default.config.lsp' -- TODO:
 require 'default.config.telescope'
 require 'default.config.treesitter'
 require 'default.config.null-ls'
+
 -- [[ User Settings ]]
 require 'user.settings.whichkey'
 require 'user.settings.indentline'
@@ -65,6 +69,8 @@ require 'user.settings.autopairs'
 require 'user.settings.autoformat'
 require 'user.settings.comment'
 require 'user.settings.highlight_on_yank'
+
+---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
