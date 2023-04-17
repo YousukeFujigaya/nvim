@@ -1,5 +1,6 @@
 return {
-  'jose-elias-alvarez/null-ls.nvim',
+  'jose-elias-alvarez/null-ls.nvim', -- for formatters and linters
+  event = 'BufEnter',
   config = function()
     local null_ls = require 'null-ls'
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
@@ -7,7 +8,7 @@ return {
     -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
     -- local diagnostics = null_ls.builtins.diagnostics
 
-    require('null-ls').setup {
+    null_ls.setup {
       debug = false,
       sources = {
         formatting.prettier.with { extra_args = { '--no-semi', '--single-quote', '--jsx-single-quote' } },

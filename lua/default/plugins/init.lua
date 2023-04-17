@@ -42,7 +42,7 @@ return {
       { 'williamboman/mason-lspconfig.nvim' }, -- Useful status updates for LSP
       { 'j-hui/fidget.nvim', event = 'VeryLazy', opts = true }, -- Useful status updates for LSP
       { 'folke/neodev.nvim', event = 'VeryLazy', opts = true }, -- Additional lua configuration, makes nvim stuff amazing!
-      { 'jose-elias-alvarez/null-ls.nvim', event = 'BufEnter' }, -- for formatters and linters
+      -- { 'jose-elias-alvarez/null-ls.nvim', event = 'BufEnter' }, -- for formatters and linters
     },
   },
 
