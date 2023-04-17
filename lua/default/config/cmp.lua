@@ -149,3 +149,6 @@ cmp.setup {
     native_menu = false,
   },
 }
+
+-- local capabilities = require('cmp_nvim_lsp').default_capabilities()
+-- vim.cmd('let g:vsnip_filetypes = {}')

@@ -127,33 +127,11 @@ return {
       padding = { left = 2, right = 2 },
     }
 
-    -- ins_left {
-    --   'filetype',
-    --   icon_only = true,
-    --   color = { fg = colors.green },
-    -- }
-    -- ins_left {
-    --   'filename',
-    --   cond = conditions.buffer_not_empty,
-    --   symbols = {
-    --     modified = '', -- Text to show when the file is modified.
-    --     readonly = '', -- Text to show when the file is non-modifiable or readonly.
-    --     unnamed = '[No Name]', -- Text to show for unnamed buffers.
-    --     newfile = '', -- Text to show for newly created file before first write
-    --   },
-    --   color = { fg = colors.fg },
-    -- }
-
     ins_left {
       'branch',
       icon = '',
       color = { fg = colors.green },
     }
-    -- ins_left {
-    --   'progress',
-    --   color = { fg = colors.fg },
-    -- }
-
     ins_left {
       'searchcount',
       icon = '',
@@ -161,7 +139,11 @@ return {
     ins_left {
       'diagnostics',
       sources = { 'nvim_diagnostic' },
-      sections = { 'error', 'warn' },
+      sections = {
+        'error',
+        'warn',
+        -- 'info',
+      },
       symbols = {
         error = ' ',
         warn = ' ',
@@ -170,7 +152,7 @@ return {
       diagnostics_color = {
         color_error = { fg = colors.red },
         color_warn = { fg = colors.yellow },
-        -- color_info = { fg = colors.cyan },
+        color_info = { fg = colors.cyan },
       },
       update_in_insert = false,
       always_visible = true,
@@ -226,9 +208,8 @@ return {
         unnamed = '[No Name]', -- Text to show for unnamed buffers.
         newfile = '', -- Text to show for newly created file before first write
       },
+      color = { fg = colors.fg },
     }
-    --   color = { fg = colors.fg },
-    -- }
     -- ins_right {
     --   -- filesize component
     --   'filesize',
@@ -236,21 +217,26 @@ return {
     --   color = { fg = colors.green },
     -- }
     ins_right {
+      'o:encoding', -- option component same as &encoding in viml
+      fmt = string.upper,
+      cond = conditions.hide_in_width,
+      color = { fg = colors.fg },
+    }
+    ins_right {
       'filetype',
       -- icon_only = true,
       icons_enabled = true,
       color = { fg = colors.fg },
       icon = nil,
     }
-    ins_right {
-      'o:encoding', -- option component same as &encoding in viml
-      fmt = string.upper,
-      cond = conditions.hide_in_width,
-      color = { fg = colors.fg },
-    }
     -- ins_right {
     --   'location',
     --   color = { fg = colors.fg },
+    -- }
+    -- ins_right {
+    --   'progress',
+    --   color = { fg = colors.fg },
+    -- }
     lualine.setup(config)
   end,
 }

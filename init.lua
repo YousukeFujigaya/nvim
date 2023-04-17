@@ -43,6 +43,7 @@ require('lazy').setup {
 
   -- Optional Plugins
   require 'user.plugins.debug',
+  require 'user.plugins.colorizer',
   require 'user.plugins.alpha',
   require 'user.plugins.project',
   require 'user.plugins.bbye',
