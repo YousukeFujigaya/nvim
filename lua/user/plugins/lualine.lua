@@ -10,6 +10,7 @@ return {
     local colors = {
       bg = '#282828',
       fg = '#dfdfe0',
+      black = '#141313',
       green = '#25be6a', -- or #42BE65
       yellow = '#08BDBA',
       blue = '#78A9FF',
@@ -83,18 +84,51 @@ return {
       table.insert(config.sections.lualine_x, component)
     end
 
+    -- Time component
+    local Ctime = require('lualine.component'):extend()
+    Ctime.init = function(self, options)
+      Ctime.super.init(self, options)
+    end
+    Ctime.update_status = function()
+      return os.date('%m/%d %H:%M', os.time())
+    end
+
+    ins_left {
+      'diagnostics',
+      sources = { 'nvim_diagnostic' },
+      sections = {
+        'error',
+        'warn',
+        -- 'info',
+      },
+      symbols = {
+        error = ' ',
+        warn = ' ',
+        -- info = ' ',
+      },
+      -- diagnostics_color = {
+      --   color_error = { fg = colors.red },
+      --   color_warn = { fg = colors.pink },
+      --   color_info = { fg = colors.cyan },
+      -- },
+      update_in_insert = false,
+      always_visible = true,
+      color = { bg = colors.black },
+      padding = { left = 1, right = 1 },
+    }
     ins_left {
       -- mode component
       function()
         local mode_state = vim.api.nvim_get_mode().mode
         if mode_state == ('i' or 'ic' or 'ix') then
-          return '- ' .. 'Insert' .. ' -'
+          return '—— ' .. 'Insert' .. ' ——'
+          -- return '- ' .. 'Insert' .. ' -'
         elseif mode_state == ('v' or 'vs' or 'V' or 'Vs') then
-          return '- ' .. 'Visual' .. ' -'
+          return '—— ' .. 'Visual' .. ' ——'
         elseif mode_state == 't' then
-          return '- ' .. 'Terminal' .. ' -'
+          return '—— ' .. 'Terminal' .. ' ——'
         else
-          return '- ' .. 'Normal' .. ' -'
+          return '—— ' .. 'Normal' .. ' ——'
         end
       end,
 
@@ -122,44 +156,31 @@ return {
           ['!'] = colors.red,
           t = colors.blue,
         }
-        return { fg = mode_color[vim.api.nvim_get_mode().mode] }
+        return { fg = mode_color[vim.api.nvim_get_mode().mode], bg = colors.black }
       end,
-      padding = { left = 2, right = 2 },
-    }
-
-    ins_left {
-      'branch',
-      icon = '',
-      color = { fg = colors.green },
+      padding = { left = 2, right = 3 },
     }
     ins_left {
       'searchcount',
       icon = '',
     }
     ins_left {
-      'diagnostics',
-      sources = { 'nvim_diagnostic' },
-      sections = {
-        'error',
-        'warn',
-        -- 'info',
-      },
-      symbols = {
-        error = ' ',
-        warn = ' ',
-        -- info = ' ',
-      },
-      diagnostics_color = {
-        color_error = { fg = colors.red },
-        color_warn = { fg = colors.yellow },
-        color_info = { fg = colors.cyan },
-      },
-      update_in_insert = false,
-      always_visible = true,
+      'branch',
+      icon = '',
+      color = { fg = colors.green, bg = colors.bg },
     }
-
-    -- Insert mid section. You can make any number of sections in neovim :)
-    -- for lualine it's any number greater then 2
+    ins_left {
+      'filename',
+      cond = conditions.buffer_not_empty,
+      path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+      color = { fg = colors.fg, bg = colors.bg },
+      symbols = {
+        modified = '', -- Text to show when the file is modified.
+        readonly = '', -- Text to show when the file is non-modifiable or readonly.
+        unnamed = '[No Name]', -- Text to show for unnamed buffers.
+        newfile = '', -- Text to show for newly created file before first write
+      },
+    }
     ins_right {
       'diff',
       symbols = {
@@ -169,10 +190,15 @@ return {
       },
       diff_color = {
         added = { fg = colors.cyan },
-        modified = { fg = colors.green },
+        modified = { fg = colors.orange },
         removed = { fg = colors.red },
       },
       cond = conditions.hide_in_width,
+    }
+    ins_right {
+      function()
+        return '%='
+      end,
     }
     ins_right {
       -- Lsp server name .
@@ -191,31 +217,14 @@ return {
         end
         return msg
       end,
-      icon = ' LSP:',
+      icon = '  LSP:',
       color = { fg = colors.fg },
     }
     ins_right {
       function()
-        return '%='
+        return 'spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
       end,
     }
-    ins_right {
-      -- 'filename',
-      cond = conditions.buffer_not_empty,
-      symbols = {
-        modified = '', -- Text to show when the file is modified.
-        readonly = '', -- Text to show when the file is non-modifiable or readonly.
-        unnamed = '[No Name]', -- Text to show for unnamed buffers.
-        newfile = '', -- Text to show for newly created file before first write
-      },
-      color = { fg = colors.fg },
-    }
-    -- ins_right {
-    --   -- filesize component
-    --   'filesize',
-    --   cond = conditions.buffer_not_empty,
-    --   color = { fg = colors.green },
-    -- }
     ins_right {
       'o:encoding', -- option component same as &encoding in viml
       fmt = string.upper,
@@ -225,10 +234,11 @@ return {
     ins_right {
       'filetype',
       -- icon_only = true,
-      icons_enabled = true,
+      icons_enabled = false,
       color = { fg = colors.fg },
       icon = nil,
     }
+    ins_right { Ctime }
     -- ins_right {
     --   'location',
     --   color = { fg = colors.fg },
