@@ -6,7 +6,10 @@ vim.o.encofing = 'utf-8'
 vim.scriptencoding = 'utf-8'
 
 -- Set highlight on search
-vim.o.hlsearch = false
+vim.o.hlsearch = true -- false -> true
+-- Tips: '<leader>h' = 'No highlight'
+--  [*] -> highlight a word on cursor
+--  'n','N' -> (highlight and) next or preveous the same word
 
 -- Make line numbers default
 vim.wo.number = true
@@ -44,7 +47,7 @@ vim.o.completeopt = 'menuone,noselect'
 vim.o.termguicolors = true
 
 -----------------------------------------------------------------------
-vim.opt.helplang = 'ja', 'en'
+vim.opt.helplang = { 'ja', 'en' }
 
 vim.opt.showmode = false
 
