@@ -28,7 +28,7 @@ configs.setup {
     'toml',
     'yaml',
     'markdown',
-    'markdown_inline',
+    -- 'markdown_inline',
     'vimdoc',
     'vim',
   },

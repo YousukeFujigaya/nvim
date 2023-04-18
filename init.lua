@@ -18,7 +18,6 @@ require '_lazy'
 require('lazy').setup {
   -- [[ Default Plugins ]]
   require 'default.plugins',
-  -- { import = 'test' }, -- A New Plugin Test
 
   -- Options
   require 'default.plugins.git',

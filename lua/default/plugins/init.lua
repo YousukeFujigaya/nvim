@@ -4,7 +4,7 @@
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 return {
-  { 'folke/lazy.nvim' }, -- Have lazy manage itself
+  -- { 'folke/lazy.nvim' }, -- Have lazy manage itself
   { 'nvim-lua/plenary.nvim' }, -- Usefful lua functions used by lots of plugins
   { 'folke/which-key.nvim', event = 'VeryLazy' }, -- Useful plugin to show you pending keybinds.
   { 'windwp/nvim-autopairs', event = 'InsertEnter' }, -- Autopairs, integrates with both cmp and treesitter
@@ -76,5 +76,7 @@ return {
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
   --
   -- { import = 'custom.plugins' },
+
+  { import = 'test.plugins' }, -- Enable to automatically import test plugins
 }
 -- , {}
