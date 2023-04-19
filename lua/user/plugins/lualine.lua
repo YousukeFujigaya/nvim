@@ -12,7 +12,7 @@ return {
       fg = '#dfdfe0',
       black = '#141313',
       green = '#25be6a', -- or #42BE65
-      yellow = '#08BDBA',
+      yellow = '#ffff5f',
       blue = '#78A9FF',
       cyan = '#33B1FF',
       -- orange = '#3DDBD9',
@@ -44,7 +44,7 @@ return {
         -- Disable sections and component separators
         component_separators = '',
         section_separators = '',
-        disabled_filetypes = { 'alpha', 'dashboard', 'NvimTree', 'Outline' },
+        disabled_filetypes = { 'alpha', 'dashboard', 'NvimTree', 'neo-tree', 'Outline' },
         always_divide_middle = true,
         theme = {
           -- We are going to use lualine_c an lualine_x as left and
@@ -90,32 +90,9 @@ return {
       Ctime.super.init(self, options)
     end
     Ctime.update_status = function()
-      return os.date('%m/%d %H:%M', os.time())
+      return os.date('%H:%M', os.time())
     end
 
-    ins_left {
-      'diagnostics',
-      sources = { 'nvim_diagnostic' },
-      sections = {
-        'error',
-        'warn',
-        -- 'info',
-      },
-      symbols = {
-        error = ' ',
-        warn = ' ',
-        -- info = ' ',
-      },
-      -- diagnostics_color = {
-      --   color_error = { fg = colors.red },
-      --   color_warn = { fg = colors.pink },
-      --   color_info = { fg = colors.cyan },
-      -- },
-      update_in_insert = false,
-      always_visible = true,
-      color = { bg = colors.black },
-      padding = { left = 1, right = 1 },
-    }
     ins_left {
       -- mode component
       function()
@@ -158,29 +135,68 @@ return {
         }
         return { fg = mode_color[vim.api.nvim_get_mode().mode], bg = colors.black }
       end,
-      padding = { left = 2, right = 3 },
+      padding = { left = 2, right = 2 },
     }
+
     ins_left {
-      'searchcount',
-      icon = '',
+      'diagnostics',
+      sources = { 'nvim_diagnostic' },
+      sections = {
+        'error',
+        'warn',
+        -- 'info',
+        -- 'hint'
+      },
+      symbols = {
+        error = ' ',
+        warn = ' ',
+        -- info = ' ',
+        -- hint = ''
+      },
+      diagnostics_color = {
+        error = { fg = colors.red },
+        warn = { fg = colors.yellow },
+        info = { fg = colors.cyan },
+      },
+      update_in_insert = false,
+      always_visible = true,
+      color = { bg = colors.black },
+      padding = { left = 0, right = 1 },
     }
+
     ins_left {
       'branch',
       icon = '',
       color = { fg = colors.green, bg = colors.bg },
+      padding = { left = 1, right = 0 },
     }
+
     ins_left {
       'filename',
       cond = conditions.buffer_not_empty,
       path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
       color = { fg = colors.fg, bg = colors.bg },
       symbols = {
-        modified = '', -- Text to show when the file is modified.
-        readonly = '', -- Text to show when the file is non-modifiable or readonly.
-        unnamed = '[No Name]', -- Text to show for unnamed buffers.
-        newfile = '', -- Text to show for newly created file before first write
+        modified = '', -- Text to show when the file is modified.
+        readonly = '', -- Text to show when the file is non-modifiable or readonly.
+        unnamed = '', -- Text to show for unnamed buffers.
+        newfile = '', -- Text to show for newly created file before first write
       },
+
+      -- symbols = {
+      --   modified = '', -- Text to show when the file is modified.
+      --   readonly = '', -- Text to show when the file is non-modifiable or readonly.
+      --   unnamed = '[No Name]', -- Text to show for unnamed buffers.
+      --   newfile = '', -- Text to show for newly created file before first write
+      -- },
     }
+
+    ins_left {
+      'searchcount',
+      icon = '',
+      always_visible = true,
+    }
+
     ins_right {
       'diff',
       symbols = {
@@ -195,11 +211,13 @@ return {
       },
       cond = conditions.hide_in_width,
     }
+
     ins_right {
       function()
         return '%='
       end,
     }
+
     ins_right {
       -- Lsp server name .
       function()
@@ -220,17 +238,20 @@ return {
       icon = '  LSP:',
       color = { fg = colors.fg },
     }
+
     ins_right {
       function()
         return 'spaces: ' .. vim.api.nvim_buf_get_option(0, 'shiftwidth')
       end,
     }
+
     ins_right {
       'o:encoding', -- option component same as &encoding in viml
       fmt = string.upper,
       cond = conditions.hide_in_width,
       color = { fg = colors.fg },
     }
+
     ins_right {
       'filetype',
       -- icon_only = true,
@@ -238,15 +259,22 @@ return {
       color = { fg = colors.fg },
       icon = nil,
     }
-    ins_right { Ctime }
+
+    ins_right {
+      icon = '',
+      Ctime,
+    }
+
     -- ins_right {
     --   'location',
     --   color = { fg = colors.fg },
     -- }
+
     -- ins_right {
     --   'progress',
     --   color = { fg = colors.fg },
     -- }
+
     lualine.setup(config)
   end,
 }

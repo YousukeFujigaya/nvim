@@ -39,20 +39,19 @@ vim.keymap.set('n', '<leader>dq', vim.diagnostic.setloclist, { desc = 'Open diag
 
 ---------------------------------------------------------------------------------------------------------
 -- split view
--- vim.keymap.set('n', 'ss', ':split<Return><C-w>w', opts)
--- vim.keymap.set('n', 'sv', ':vsplit<Return><C-w>w', opts)
-vim.keymap.set('n', '<leader>ss', ':split<Return><C-w>w', opts)
-vim.keymap.set('n', '<leader>sv', ':vsplit<Return><C-w>w', opts)
+vim.keymap.set('n', 'ss', ':split<Return><C-w>w', { desc = 'Split window horizontally' })
+vim.keymap.set('n', 'sv', ':vsplit<Return><C-w>w', { desc = 'Split window vertically' })
 
 -- move to active buffer window
-vim.keymap.set('n', '<M-h>', '<C-w>h', opts)
-vim.keymap.set('n', '<M-k>', '<C-w>k', opts)
-vim.keymap.set('n', '<M-j>', '<C-w>j', opts)
-vim.keymap.set('n', '<M-l>', '<C-w>l', opts)
--- vim.keymap.set('n', 'sh', '<C-w>h', opts)
--- vim.keymap.set('n', 'sk', '<C-w>k', opts)
--- vim.keymap.set('n', 'sj', '<C-w>j', opts)
--- vim.keymap.set('n', 'sl', '<C-w>l', opts)
+vim.keymap.set('', 'sh', '<C-w>h', opts)
+vim.keymap.set('', 'sk', '<C-w>k', opts)
+vim.keymap.set('', 'sj', '<C-w>j', opts)
+vim.keymap.set('', 'sl', '<C-w>l', opts)
+--------------------------------------------------------------------------------------------------------
+-- vim.keymap.set('n', '<M-h>', '<C-w>h', opts)
+-- vim.keymap.set('n', '<M-k>', '<C-w>k', opts)
+-- vim.keymap.set('n', '<M-j>', '<C-w>j', opts)
+-- vim.keymap.set('n', '<M-l>', '<C-w>l', opts)
 --------------------------------------------------------------------------------------------------------
 -- Normal --
 -- Better window navigation
