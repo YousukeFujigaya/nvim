@@ -19,11 +19,12 @@ require('lazy').setup {
   -- [[ Default Plugins ]]
   require 'default.plugins',
 
-  -- Options
+  -- Optional
   require 'default.plugins.git',
   require 'default.plugins.null-ls',
-  require 'default.plugins.mason-tool-installer', -- Automatically Installed for LSP
-  require 'default.plugins.options',
+  require 'default.plugins.mason-tool-installer', -- Automatically Install servers for LSP
+  -- require 'default.plugins.vimdoc-ja',
+  -- require 'default.plugins.startuptime',
 
   -- [[ User Plugins ]]
   -- Colorscheme
@@ -38,7 +39,8 @@ require('lazy').setup {
   require 'user.plugins.lualine',
   require 'user.plugins.bufferline',
   require 'user.plugins.gitsigns',
-  require 'user.plugins.nvim-tree', -- TODO: keymapの変更
+  -- require 'user.plugins.nvim-tree', -- TODO: keymapの変更
+  require 'user.plugins.filetree',
 
   -- Optional Plugins
   require 'user.plugins.debug',
@@ -68,7 +70,7 @@ require 'user.settings.autocommands'
 require 'user.settings.autopairs'
 require 'user.settings.autoformat'
 require 'user.settings.comment'
-require 'user.settings.highlight_on_yank'
+require 'user.settings.highlight-on-yank'
 
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------
