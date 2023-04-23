@@ -95,14 +95,14 @@ telescope.setup {
 
 -- Extensions Load
 -- Enable telescope fzf native, if installed
--- pcall(telescope.load_extentions, 'telescope-fzf-native')
-pcall(telescope.load_extentions, 'fzf')
-pcall(telescope.load_extentions, 'telescope-live-grep-args')
+pcall(telescope.load_extention, 'fzf')
+-- pcall(telescope.load_extention, 'telescope-fzf-native')
+pcall(telescope.load_extension, 'telescope-live-grep-args')
 pcall(telescope.load_extension, 'projects')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
-vim.keymap.set('n', '<leader><space><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
@@ -114,7 +114,7 @@ end, { desc = '[/] Fuzzily search in current buffer' })
 vim.keymap.set('n', '<leader>sf', function()
   builtin.find_files {
     no_ignore = true,
-    file_ignore_patterns = { 'archived/', '*-lock.json' },
+    file_ignore_patterns = { 'archived/', 'node_modules/', '*-lock.json' },
   }
 end, { desc = '[S]earch [F]iles' })
 -- vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = '[S]earch [F]iles' })

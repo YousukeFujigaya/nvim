@@ -19,6 +19,9 @@ require('lazy').setup {
   -- [[ Default Plugins ]]
   require 'default.plugins',
 
+  -- Test Plugins
+  { import = 'test.plugins' }, -- Enable to automatically import test plugins
+
   -- Optional
   require 'default.plugins.git',
   require 'default.plugins.null-ls',
@@ -38,12 +41,12 @@ require('lazy').setup {
   require 'user.plugins.modes',
   require 'user.plugins.lualine',
   require 'user.plugins.bufferline',
-  require 'user.plugins.gitsigns',
-  -- require 'user.plugins.nvim-tree', -- TODO: keymapの変更
-  require 'user.plugins.filetree',
+  -- require 'user.plugins.nvim-tree',
+  require 'user.plugins.neo-tree',
 
   -- Optional Plugins
-  require 'user.plugins.debug',
+  -- require 'user.plugins.debug',
+  require 'user.plugins.whichkey',
   require 'user.plugins.colorizer',
   require 'user.plugins.alpha',
   require 'user.plugins.project',
@@ -57,20 +60,19 @@ require('lazy').setup {
 vim.cmd('colorscheme ' .. user_theme)
 
 -- [[ Default Settings ]]
-require 'default.config.cmp'
-require 'default.config.lsp' -- TODO:
-require 'default.config.telescope'
-require 'default.config.treesitter'
-require 'default.config.null-ls'
+require 'default.settings.cmp'
+require 'default.settings.lsp'
+require 'default.settings.telescope'
+require 'default.settings.treesitter'
 
 -- [[ User Settings ]]
-require 'user.settings.whichkey'
 require 'user.settings.indentline'
 require 'user.settings.autocommands'
 require 'user.settings.autopairs'
 require 'user.settings.autoformat'
 require 'user.settings.comment'
 require 'user.settings.highlight-on-yank'
+-- require 'user.settings._whichkey'
 
 ---------------------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------------------

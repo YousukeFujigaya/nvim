@@ -4,9 +4,8 @@
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 return {
-  -- { 'folke/lazy.nvim' }, -- Have lazy manage itself
   { 'nvim-lua/plenary.nvim' }, -- Usefful lua functions used by lots of plugins
-  { 'folke/which-key.nvim', event = 'VeryLazy' }, -- Useful plugin to show you pending keybinds.
+  -- { 'folke/which-key.nvim', event = 'VeryLazy' }, -- Useful plugin to show you pending keybinds.
   { 'windwp/nvim-autopairs', event = 'InsertEnter' }, -- Autopairs, integrates with both cmp and treesitter
   { -- "gc" to comment visual regions/lines
     'numToStr/Comment.nvim',
@@ -20,7 +19,7 @@ return {
   -- Autocompletion (Cmp)
   {
     'hrsh7th/nvim-cmp', -- The completion plugins
-    event = 'InsertEnter',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     -- module = 'cmp',
     dependencies = {
       { 'hrsh7th/cmp-nvim-lsp', event = 'InsertEnter' },
@@ -38,11 +37,10 @@ return {
   {
     'neovim/nvim-lspconfig', -- enable LSP
     dependencies = {
-      { 'williamboman/mason.nvim', opts = true }, -- simple to use language server installer
+      { 'williamboman/mason.nvim' }, -- simple to use language server installer
       { 'williamboman/mason-lspconfig.nvim' }, -- Useful status updates for LSP
       { 'j-hui/fidget.nvim', event = 'VeryLazy', opts = true }, -- Useful status updates for LSP
       { 'folke/neodev.nvim', event = 'VeryLazy', opts = true }, -- Additional lua configuration, makes nvim stuff amazing!
-      -- { 'jose-elias-alvarez/null-ls.nvim', event = 'BufEnter' }, -- for formatters and linters
     },
   },
 
@@ -61,12 +59,13 @@ return {
   -- Treesitter
   { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
     dependencies = {
       { 'nvim-treesitter/nvim-treesitter-textobjects' },
     },
-    config = function()
-      pcall(require('nvim-treesitter.install').update { with_sync = true })
-    end,
+    -- config = function()
+    --   pcall(require('nvim-treesitter.install').update { with_sync = true })
+    -- end,
   },
 
   -- NOTE: The import below automatically adds your own plugins, configuration, etc from `lua/custom/plugins/*.lua`
@@ -77,6 +76,6 @@ return {
   --
   -- { import = 'custom.plugins' },
 
-  { import = 'test.plugins' }, -- Enable to automatically import test plugins
+  -- { import = 'test.plugins' }, -- Enable to automatically import test plugins
 }
 -- , {}

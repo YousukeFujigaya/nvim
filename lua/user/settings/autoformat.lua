@@ -1,16 +1,13 @@
--- autoformat.lua
---
 -- Use your language server to automatically format your code on save.
 -- Adds additional commands as well to manage the behavior
--- local status_ok, _ = pcall(require, 'nvim-lspconfig')
--- if not status_ok then
---   return
--- end
-
+local status_ok, _ = pcall(require, 'lspconfig')
+if not status_ok then
+  return
+end
 -- Switch for controlling whether you want autoformatting.
 --  Use :KickstartFormatToggle to toggle autoformatting on or off
 local format_is_enabled = true
-vim.api.nvim_create_user_command('KickstartFormatToggle', function()
+vim.api.nvim_create_user_command('AutoFormatToggle', function()
   format_is_enabled = not format_is_enabled
   print('Setting autoformatting to: ' .. tostring(format_is_enabled))
 end, {})
@@ -21,7 +18,7 @@ end, {})
 local _augroups = {}
 local get_augroup = function(client)
   if not _augroups[client.id] then
-    local group_name = 'kickstart-lsp-format-' .. client.name
+    local group_name = 'lsp-format-' .. client.name
     local id = vim.api.nvim_create_augroup(group_name, { clear = true })
     _augroups[client.id] = id
   end
@@ -33,7 +30,7 @@ end
 --
 -- See `:help LspAttach` for more information about this autocmd event.
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('kickstart-lsp-attach-format', { clear = true }),
+  group = vim.api.nvim_create_augroup('lsp-attach-format', { clear = true }),
   -- This is where we attach the autoformatting for reasonable clients
   callback = function(args)
     local client_id = args.data.client_id
@@ -54,6 +51,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     -- Create an autocmd that will run *before* we save the buffer.
     --  Run the formatting command for the LSP that has just attached.
     vim.api.nvim_create_autocmd('BufWritePre', {
+      desc = 'Auto format before save',
       group = get_augroup(client),
       buffer = bufnr,
       callback = function()

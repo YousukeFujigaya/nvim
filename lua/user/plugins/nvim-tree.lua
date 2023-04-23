@@ -43,6 +43,7 @@ return {
       -- vim.keymap.set('n', '<', api.node.navigate.sibling.prev, opts 'Previous Sibling')
       -- vim.keymap.set('n', '.', api.node.run.cmd, opts 'Run Command')
       -- vim.keymap.set('n', '-', api.tree.change_root_to_parent, opts 'Up')
+      vim.keymap.set('n', 'u', api.tree.change_root_to_parent, opts 'Up')
       -- vim.keymap.set('n', 'a', api.fs.create, opts 'Create')
       -- vim.keymap.set('n', 'bmv', api.marks.bulk.move, opts 'Move Bookmarked')
       -- vim.keymap.set('n', 'B', api.tree.toggle_no_buffer_filter, opts 'Toggle No Buffer')
@@ -53,19 +54,23 @@ return {
       -- vim.keymap.set('n', 'd', api.fs.remove, opts 'Delete')
       -- vim.keymap.set('n', 'D', api.fs.trash, opts 'Trash')
       -- vim.keymap.set('n', 'E', api.tree.expand_all, opts 'Expand All')
+      vim.keymap.set('n', 'A', api.tree.expand_all, opts 'Expand All')
       -- vim.keymap.set('n', 'e', api.fs.rename_basename, opts 'Rename: Basename')
       -- vim.keymap.set('n', ']e', api.node.navigate.diagnostics.next, opts 'Next Diagnostic')
       -- vim.keymap.set('n', '[e', api.node.navigate.diagnostics.prev, opts 'Prev Diagnostic')
       -- vim.keymap.set('n', 'F', api.live_filter.clear, opts 'Clean Filter')
       -- vim.keymap.set('n', 'f', api.live_filter.start, opts 'Filter')
       -- vim.keymap.set('n', 'g?', api.tree.toggle_help, opts 'Help')
+      vim.keymap.set('n', '?', api.tree.toggle_help, opts 'Help')
       -- vim.keymap.set('n', 'gy', api.fs.copy.absolute_path, opts 'Copy Absolute Path')
       -- vim.keymap.set('n', 'H', api.tree.toggle_hidden_filter, opts 'Toggle Dotfiles')
       -- vim.keymap.set('n', 'I', api.tree.toggle_gitignore_filter, opts 'Toggle Git Ignore')
+      vim.keymap.set('n', 'h', api.tree.toggle_gitignore_filter, opts 'Toggle Git Ignore')
       -- vim.keymap.set('n', 'J', api.node.navigate.sibling.last, opts 'Last Sibling')
       -- vim.keymap.set('n', 'K', api.node.navigate.sibling.first, opts 'First Sibling')
       -- vim.keymap.set('n', 'm', api.marks.toggle, opts 'Toggle Bookmark')
       -- vim.keymap.set('n', 'o', api.node.open.edit, opts 'Open')
+      vim.keymap.set('n', '<CR>', api.node.open.edit, opts 'Open')
       -- vim.keymap.set('n', 'O', api.node.open.no_window_picker, opts 'Open: No Window Picker')
       -- vim.keymap.set('n', 'p', api.fs.paste, opts 'Paste')
       -- vim.keymap.set('n', 'P', api.node.navigate.parent, opts 'Parent Directory')
@@ -74,6 +79,7 @@ return {
       -- vim.keymap.set('n', 'R', api.tree.reload, opts 'Refresh')
       -- vim.keymap.set('n', 's', api.node.run.system, opts 'Run System')
       -- vim.keymap.set('n', 'S', api.tree.search_node, opts 'Search')
+      vim.keymap.set('n', '/', api.tree.search_node, opts 'Search')
       -- vim.keymap.set('n', 'U', api.tree.toggle_custom_filter, opts 'Toggle Hidden')
       -- vim.keymap.set('n', 'W', api.tree.collapse_all, opts 'Collapse')
       -- vim.keymap.set('n', 'x', api.fs.cut, opts 'Cut')
@@ -110,30 +116,30 @@ return {
       --   local node = api.tree.get_node_under_cursor()
       --   print(node.absolute_path)
       -- end, opts 'Print Node Path')
-      vim.keymap.set('n', 'Z', api.node.run.system, opts 'Run System')
+      -- vim.keymap.set('n', 'Z', api.node.run.system, opts 'Run System')
     end
 
     require('nvim-tree').setup { -- BEGIN_DEFAULT_OPTS
+      -- on_attach = 'default',
+      on_attach = on_attach,
       auto_reload_on_write = true,
       disable_netrw = false,
-      hijack_cursor = false,
+      hijack_cursor = true,
       hijack_netrw = true,
       hijack_unnamed_buffer_when_opening = false,
       sort_by = 'name',
       -- root_dirs = {},
       prefer_startup_root = false,
-      sync_root_with_cwd = false,
+      sync_root_with_cwd = true,
       reload_on_bufenter = false,
       respect_buf_cwd = false,
-      -- on_attach = 'default',
-      on_attach = on_attach,
       remove_keymaps = false,
       select_prompts = false,
       view = {
         centralize_selection = false,
         cursorline = true,
         debounce_delay = 15,
-        width = 30,
+        width = 40,
         hide_root_folder = false,
         side = 'left',
         preserve_window_proportions = false,
@@ -141,7 +147,7 @@ return {
         relativenumber = false,
         signcolumn = 'yes',
         mappings = {
-          custom_only = false,
+          custom_only = true,
           list = {
             -- user mappings go here
           },
@@ -161,15 +167,15 @@ return {
       },
       renderer = {
         add_trailing = false,
-        group_empty = false,
-        highlight_git = false,
-        full_name = false,
-        highlight_opened_files = 'none',
-        highlight_modified = 'none',
-        root_folder_label = ':~:s?$?/..?',
-        indent_width = 2,
+        group_empty = true,
+        highlight_git = true,
+        full_name = true,
+        -- highlight_opened_files = 'none',
+        -- highlight_modified = 'none',
+        root_folder_label = ':t',
+        indent_width = 4,
         indent_markers = {
-          enable = false,
+          enable = true,
           inline_arrows = true,
           icons = {
             corner = '└',
@@ -181,14 +187,15 @@ return {
         },
         icons = {
           webdev_colors = true,
-          git_placement = 'before',
-          modified_placement = 'after',
+          -- git_placement = 'before',
+          git_placement = 'after',
+          modified_placement = 'before',
           padding = ' ',
           symlink_arrow = ' ➛ ',
           show = {
             file = true,
-            folder = true,
-            folder_arrow = true,
+            folder = false,
+            folder_arrow = false,
             git = true,
             modified = true,
           },
@@ -212,7 +219,7 @@ return {
               staged = '✓',
               unmerged = '',
               renamed = '➜',
-              untracked = '★',
+              untracked = '',
               deleted = '',
               ignored = '◌',
             },
@@ -226,17 +233,17 @@ return {
         auto_open = true,
       },
       update_focused_file = {
-        enable = false,
-        update_root = false,
-        ignore_list = {},
+        enable = true,
+        update_root = true,
+        ignore_list = { 'help' },
       },
       system_open = {
         cmd = '',
         args = {},
       },
       diagnostics = {
-        enable = false,
-        show_on_dirs = false,
+        enable = true,
+        show_on_dirs = true,
         show_on_open_dirs = true,
         debounce_delay = 50,
         severity = {
@@ -254,7 +261,7 @@ return {
         dotfiles = false,
         git_clean = false,
         no_buffer = false,
-        custom = {},
+        custom = { '\\.DS_Store', 'thumbs.db', 'node_modules/', '\\.git$' },
         exclude = {},
       },
       filesystem_watchers = {
@@ -265,21 +272,21 @@ return {
       git = {
         enable = true,
         ignore = true,
-        show_on_dirs = true,
-        show_on_open_dirs = true,
+        show_on_dirs = false,
+        show_on_open_dirs = false,
         timeout = 400,
       },
       modified = {
-        enable = false,
+        enable = true,
         show_on_dirs = true,
-        show_on_open_dirs = true,
+        show_on_open_dirs = false,
       },
       actions = {
         use_system_clipboard = true,
         change_dir = {
-          enable = true,
+          enable = false,
           global = false,
-          restrict_above_cwd = false,
+          restrict_above_cwd = true,
         },
         expand_all = {
           max_folder_discovery = 300,
@@ -300,7 +307,8 @@ return {
           window_picker = {
             enable = true,
             picker = 'default',
-            chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
+            -- chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
+            chars = 'aouei',
             exclude = {
               filetype = { 'notify', 'packer', 'qf', 'diff', 'fugitive', 'fugitiveblame' },
               buftype = { 'nofile', 'terminal', 'help' },
@@ -308,7 +316,7 @@ return {
           },
         },
         remove_file = {
-          close_window = true,
+          close_window = false,
         },
       },
       trash = {
@@ -341,7 +349,7 @@ return {
       },
       log = {
         enable = false,
-        truncate = false,
+        truncate = true,
         types = {
           all = false,
           config = false,

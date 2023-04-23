@@ -9,17 +9,19 @@ return {
     config = function()
       require('modes').setup {
         colors = {
-          copy = '#c7c7c7',
-          delete = '#c7c7c7',
-          insert = '#c7c7c7',
-          visual = '#c7c7c7',
+          -- copy = '#c7c7c7',
+          -- delete = '#c7c7c7',
+          insert = '#78A9FF',
+          -- insert = '#c7c7c7',
+          visual = '#BE95FF',
+          -- visual = '#c7c7c7',
         },
 
         -- Set opacity for cursorline and number background
         line_opacity = 0.2,
 
         -- Enable cursor highlights
-        set_cursor = true,
+        set_cursor = false,
 
         -- Enable cursorline initially, and disable cursorline for inactive windows
         -- or ignored filetypes

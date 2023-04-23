@@ -155,7 +155,7 @@ return {
       },
       diagnostics_color = {
         error = { fg = colors.red },
-        warn = { fg = colors.yellow },
+        warn = { fg = colors.magenta },
         info = { fg = colors.cyan },
       },
       update_in_insert = false,
