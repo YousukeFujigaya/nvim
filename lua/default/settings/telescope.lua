@@ -94,9 +94,7 @@ telescope.setup {
 }
 
 -- Extensions Load
--- Enable telescope fzf native, if installed
-pcall(telescope.load_extention, 'fzf')
--- pcall(telescope.load_extention, 'telescope-fzf-native')
+pcall(telescope.load_extention, 'fzf') -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, 'telescope-live-grep-args')
 pcall(telescope.load_extension, 'projects')
 
@@ -121,6 +119,6 @@ end, { desc = '[S]earch [F]iles' })
 vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
 vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch current [W]ord' })
 -- vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
-vim.keymap.set('n', '<leader>sg', telescope.extensions.live_grep_args.live_grep_args, { desc = '[S]earch [T]ext by Grep Args' })
+vim.keymap.set('n', '<leader>sg', telescope.extensions.live_grep_args.live_grep_args, { desc = '[S]earch by rip[G]rep Args' })
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
 vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })

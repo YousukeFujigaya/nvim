@@ -5,6 +5,7 @@
 
 return {
   'WhoIsSethDaniel/mason-tool-installer.nvim',
+  event = 'VeryLazy',
   config = function()
     require('mason-tool-installer').setup {
 
@@ -30,7 +31,14 @@ return {
         'yamlfmt',
 
         -- Linter
+        -- "mypy",
         -- 'misspell',
+
+        -- Diagnostics
+        -- 'cspell',
+
+        -- Dap
+        -- "debugpy",
 
         -- you can pin a tool to a particular version
         -- { 'golangci-lint', version = 'v1.47.0' },

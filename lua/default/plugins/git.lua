@@ -3,7 +3,7 @@ return { -- Git related plugins
   { 'tpope/vim-rhubarb', event = 'CmdlineEnter' }, -- Open the Git file in browser
   {
     'lewis6991/gitsigns.nvim', -- Adds git releated signs to the gutter, as well as utilities for managing changes
-    -- event = { 'BufNewFile, BufRead' },
+    event = { 'BufNewFile, BufRead' },
     -- opts = {
     --   -- See `:help gitsigns.txt`
     --   signs = {

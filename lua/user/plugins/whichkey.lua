@@ -111,7 +111,7 @@ return {
       ['W'] = { '<cmd>w!<CR>', 'Force Save' },
       ['q'] = { '<cmd>q<CR>', 'Quit' },
       ['Q'] = { '<cmd>q!<CR>', 'Force Quit' },
-      ['c'] = { '<cmd>Bdelete!<CR>', 'close Buffer' },
+      ['c'] = { '<cmd>Bdelete<CR>', 'close Buffer' },
       ['C'] = { '<cmd>sil! exe "%bd|e#|bd#|normal `"<cr>"', 'Close other buffers except unsaved' },
       ['h'] = { '<cmd>nohlsearch<CR>', 'No Highlight' },
 

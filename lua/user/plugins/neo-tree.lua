@@ -1,7 +1,8 @@
 return {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
-  event = 'CmdlineEnter',
+  -- event = 'CmdlineEnter',
+  key = '<leader>e',
   cmd = 'NeoTreeFocusToggle',
   dependencies = {
     { 'nvim-lua/plenary.nvim' },

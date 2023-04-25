@@ -5,46 +5,56 @@
 ---------------------------------------------------------------------------------------------
 -- [[ User Options ]]
 require 'user.settings.options'
-require 'user.settings.keymaps' -- NOTE: Must set before plugins are required (require '_lazy')
-
+require 'user.settings.keymaps' -- NOTE: Must set before plugins are required
 -- Colorscheme ------------------------------------------------------------------------------
 local user_theme = require('user.colorscheme').nightfox.carbonfox
 ---------------------------------------------------------------------------------------------
-
--- Lazy Set Up ------------------------------------------------------------------------------
-require '_lazy'
----------------------------------------------------------------------------------------------
---   Install Plugins
+-- Install package manager ------------------------------------------------------------------
+--    https://github.com/folke/lazy.nvim
+--    `:help lazy.nvim.txt` for more info
+local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system {
+    'git',
+    'clone',
+    '--filter=blob:none',
+    'https://github.com/folke/lazy.nvim.git',
+    '--branch=stable', -- latest stable release
+    lazypath,
+  }
+end
+vim.opt.rtp:prepend(lazypath)
+-- Install Plugins --------------------------------------------------------------------------
 require('lazy').setup {
   -- [[ Default Plugins ]]
   require 'default.plugins',
 
-  -- Test Plugins
+  --    Test Plugins
   { import = 'test.plugins' }, -- Enable to automatically import test plugins
 
-  -- Optional
+  --    Default Optional Plugins
   require 'default.plugins.git',
   require 'default.plugins.null-ls',
   require 'default.plugins.mason-tool-installer', -- Automatically Install servers for LSP
   -- require 'default.plugins.vimdoc-ja',
-  -- require 'default.plugins.startuptime',
+  require 'default.plugins.startuptime',
 
   -- [[ User Plugins ]]
-  -- Colorscheme
+  --    Colorscheme
   require 'user.colorscheme.nightfox',
   -- require 'user.colorscheme.onedark',
   -- require 'user.colorscheme.tokyonight',
   -- require 'user.colorscheme.vscode',
   -- require 'user.colorscheme.darkplus',
 
-  -- User Interface
+  --    User Interface
   require 'user.plugins.modes',
   require 'user.plugins.lualine',
   require 'user.plugins.bufferline',
   -- require 'user.plugins.nvim-tree',
   require 'user.plugins.neo-tree',
 
-  -- Optional Plugins
+  --    User Optional Plugins
   -- require 'user.plugins.debug',
   require 'user.plugins.whichkey',
   require 'user.plugins.colorizer',
@@ -53,9 +63,7 @@ require('lazy').setup {
   require 'user.plugins.bbye',
 }
 
----------------------------------------------------------------------------------------------
 -- Settings  --------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
 -- [[ Set Colorscheme ]]
 vim.cmd('colorscheme ' .. user_theme)
 
@@ -74,7 +82,6 @@ require 'user.settings.comment'
 require 'user.settings.highlight-on-yank'
 -- require 'user.settings._whichkey'
 
----------------------------------------------------------------------------------------------
----------------------------------------------------------------------------------------------
--- The line beneath this is called `modeline`. See `:help modeline`
+---- modeline -------------------------------------------------------------------------------
+--    The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
