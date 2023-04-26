@@ -1,9 +1,6 @@
--- If you don't know anything about Lua, I recommend taking some time to read through
---   a guide. One possible example:
---   - https://learnxinyminutes.com/docs/lua/
+-- If you don't know anything about Lua, I recommend taking some time to read through a guide.
 --   And then you can explore or search through `:help lua-guide`
----------------------------------------------------------------------------------------------
--- [[ User Options ]]
+--- User Options ----------------------------------------------------------------------------
 require 'user.settings.options'
 require 'user.settings.keymaps' -- NOTE: Must set before plugins are required
 -- Colorscheme ------------------------------------------------------------------------------
@@ -25,7 +22,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 -- Install Plugins --------------------------------------------------------------------------
-require('lazy').setup {
+require('lazy').setup { -- NOTE: comment out -> plugins are NOT loaded
   -- [[ Default Plugins ]]
   require 'default.plugins',
 
