@@ -15,7 +15,12 @@ vim.g.maplocalleader = ' '
 
 -- Shorten function name
 local keymap = function(mode, keys, func, opts)
-  local _opts = { noremap = true, silent = true }
+  local _opts = {
+    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+    silent = true, -- use `silent` when creating keymaps
+    noremap = true, -- use `noremap` when creating keymaps
+    nowait = true, -- use `nowait` when creating keymaps
+  }
   if not opts then
     vim.keymap.set(mode, keys, func, _opts)
   else
@@ -61,10 +66,14 @@ keymap('n', '<S-h>', ':bprevious<CR>')
 -- keymap('n', '<C-Down>', ':resize +2<CR>')
 -- keymap('n', '<C-Left>', ':vertical resize -2<CR>')
 -- keymap('n', '<C-Right>', ':vertical resize +2<CR>')
+keymap('n', '<M-Up>', ':resize -2<CR>')
+keymap('n', '<M-Down>', ':resize +2<CR>')
+keymap('n', '<M-l>', ':vertical resize +2<CR>')
+keymap('n', '<M-h>', ':vertical resize -2<CR>')
 
 -- -- Move text up and down
--- keymap('n', '<A-j>', '<Esc>:m .+1<CR>==gi')
--- keymap('n', '<A-k>', '<Esc>:m .-2<CR>==gi')
+-- keymap('n', '<M-j>', '<Esc>:m .+1<CR>==gi')
+-- keymap('n', '<M-k>', '<Esc>:m .-2<CR>==gi')
 
 -- Insert Mode --
 -- Press jk fast to exit insert mode
@@ -79,16 +88,16 @@ keymap('i', 'kj', '<ESC>')
 -- keymap('v', '>', '>gv')
 
 -- -- Move text up and down
--- keymap('v', '<A-j>', ':m .+1<CR>==')
--- keymap('v', '<A-k>', ':m .-2<CR>==')
--- keymap('v', 'p', '"_dP')
+keymap('v', '<M-j>', ':m .+1<CR>==')
+keymap('v', '<M-k>', ':m .-2<CR>==')
+keymap('v', 'p', '"_dP')
 
 -- -- Visual Block --
 -- -- Move text up and down
 -- keymap('x', 'J', ":move '>+1<CR>gv-gv")
 -- keymap('x', 'K', ":move '<-2<CR>gv-gv")
--- keymap('x', '<A-j>', ":move '>+1<CR>gv-gv")
--- keymap('x', '<A-k>', ":move '<-2<CR>gv-gv")
+-- keymap('x', '<M-j>', ":move '>+1<CR>gv-gv")
+-- keymap('x', '<M-k>', ":move '<-2<CR>gv-gv")
 
 -- -- Terminal --
 -- local term_opts = { silent = true }

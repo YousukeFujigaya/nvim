@@ -6,12 +6,15 @@ vim.opt.backup = false -- Create a backup file
 -- encoding
 vim.o.encofing = 'utf-8'
 vim.scriptencoding = 'utf-8'
+vim.o.fileencoding = 'utf-8'
+vim.opt.shell = 'zsh'
 
 vim.opt.swapfile = false -- Create a swapfile
 vim.opt.writebackup = false -- If a file is being edited by another program (or was written to file while editing with another program), it is not allowed to be edited
 vim.opt.undofile = true -- Enable persistent undo
 
 vim.opt.helplang = { 'ja', 'en' }
+vim.opt.fillchars:append { diff = '╱' }
 vim.o.termguicolors = true -- Set term gui colors (most terminals support this)
 -- NOTE: You should make sure your terminal supports this
 vim.o.mouse = 'a' -- Allow the mouse to be used in neovim
@@ -20,8 +23,8 @@ vim.opt.cmdheight = 1 -- More space in the neovim command line for displaying me
 vim.o.completeopt = 'menuone,noselect' -- Set completeopt to have a better completion experience
 vim.opt.conceallevel = 0 -- so that `` is visible in markdown files
 vim.wo.number = true -- Make line numbers default
-vim.opt.relativenumber = false -- Set relative numbered lines
-vim.opt.numberwidth = 4 -- set number column width to 2 {default 4}
+vim.wo.relativenumber = false -- Set relative numbered lines
+vim.opt.numberwidth = 2 -- set number column width to 2 {default 4}
 vim.opt.cursorline = true -- Highlight the current line
 vim.o.hlsearch = true -- Highlight all matches on previous search pattern
 -- Tips: '<leader>h' = 'No highlight'
@@ -53,9 +56,10 @@ vim.opt.sidescrolloff = 8 -- minimal number of screen columns either side of cur
 -----------------------------------------------------------------------
 
 -- float-transparent
--- vim.opt.winblend = 5
+vim.opt.winblend = 30
+vim.opt.pumblend = 30
 
--- vim.o.background = 'dark' -- Set backgroundcolor
+vim.opt.ambiwidth = 'single'
 
 -- ファイルを開いた時に、カーソルの場所を復元する
 -- vim.api.nvim_create_autocmd({ "BufReadPost" }, {

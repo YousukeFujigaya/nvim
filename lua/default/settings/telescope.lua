@@ -11,9 +11,10 @@ local builtin = require 'telescope.builtin'
 
 telescope.setup {
   defaults = {
-    prompt_prefix = ' ',
+    -- prompt_prefix = ' ',
+    prompt_prefix = ' ',
     selection_caret = ' ',
-    path_display = { 'smart' },
+    path_display = {}, -- 'hidden', 'tail', 'absolute', 'samart', 'shorten', 'truncate'
     file_ignore_patterns = { '^node_modules/', '*-lock.json' },
     mappings = {
       i = {

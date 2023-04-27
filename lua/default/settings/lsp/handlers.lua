@@ -25,11 +25,12 @@ M.setup = function()
   end
 
   local config = {
-    virtual_text = true, -- virtual text
+    -- virtual_text = true, -- virtual text
+    virtual_text = { spacing = 4, prefix = ' ', severity = 'Error' },
     signs = {
       active = signs, -- show signs
     },
-    update_in_insert = true,
+    update_in_insert = false,
     underline = true,
     severity_sort = true,
     float = {
