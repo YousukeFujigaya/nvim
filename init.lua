@@ -4,7 +4,7 @@
 require 'user.settings.options'
 require 'user.settings.keymaps' -- NOTE: Must set before plugins are required
 -- Colorscheme ------------------------------------------------------------------------------
-local user_theme = require('user.colorscheme').nightfox.carbonfox
+local user_colorscheme = require('user.colorscheme').nightfox.carbonfox
 ---------------------------------------------------------------------------------------------
 -- Install package manager ------------------------------------------------------------------
 --    https://github.com/folke/lazy.nvim
@@ -30,6 +30,7 @@ require('lazy').setup { -- NOTE: comment out -> plugins are NOT loaded
   { import = 'test.plugins' }, -- Enable to automatically import test plugins
 
   --    Default Optional Plugins
+  -- require 'default.plugins.debug',
   require 'default.plugins.git',
   require 'default.plugins.null-ls',
   require 'default.plugins.mason-tool-installer', -- Automatically Install servers for LSP
@@ -42,7 +43,6 @@ require('lazy').setup { -- NOTE: comment out -> plugins are NOT loaded
   -- require 'user.colorscheme.onedark',
   -- require 'user.colorscheme.tokyonight',
   -- require 'user.colorscheme.vscode',
-  -- require 'user.colorscheme.darkplus',
 
   --    User Interface
   require 'user.plugins.modes',
@@ -52,7 +52,6 @@ require('lazy').setup { -- NOTE: comment out -> plugins are NOT loaded
   require 'user.plugins.neo-tree',
 
   --    User Optional Plugins
-  -- require 'user.plugins.debug',
   require 'user.plugins.whichkey',
   require 'user.plugins.colorizer',
   require 'user.plugins.alpha',
@@ -62,7 +61,12 @@ require('lazy').setup { -- NOTE: comment out -> plugins are NOT loaded
 
 -- Settings  --------------------------------------------------------------------------------
 -- [[ Set Colorscheme ]]
-vim.cmd('colorscheme ' .. user_theme)
+-- vim.cmd 'autocmd ColorScheme * highlight Normal ctermbg=none guibg=none'
+-- vim.cmd 'autocmd ColorScheme * highlight NonText ctermbg=none guibg=none'
+-- vim.cmd 'autocmd ColorScheme * highlight LineNr ctermbg=none guibg=none'
+-- vim.cmd 'autocmd ColorScheme * highlight Folded ctermbg=none guibg=none'
+-- vim.cmd 'autocmd ColorScheme * highlight EndOfBuffer ctermbg=none guibg=none'
+vim.cmd('colorscheme ' .. user_colorscheme)
 
 -- [[ Default Settings ]]
 require 'default.settings.cmp'

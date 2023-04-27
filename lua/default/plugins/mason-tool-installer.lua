@@ -5,7 +5,7 @@
 
 return {
   'WhoIsSethDaniel/mason-tool-installer.nvim',
-  event = 'VeryLazy',
+  event = { 'BufRead', 'BufEnter' },
   config = function()
     require('mason-tool-installer').setup {
 

@@ -4,32 +4,31 @@
 --  You can also configure plugins after the setup call,
 --    as they will be available in your neovim runtime.
 return {
-  { 'nvim-lua/plenary.nvim' }, -- Usefful lua functions used by lots of plugins
-  { 'folke/neodev.nvim', opts = true }, -- Additional lua configuration, makes nvim stuff amazing!
+  { 'nvim-lua/plenary.nvim', priority = 999 }, -- Usefful lua functions used by lots of plugins
+  { 'folke/neodev.nvim', priority = 999, opts = true }, -- Additional lua configuration, makes nvim stuff amazing!
   { 'tpope/vim-sleuth', event = 'InsertEnter' }, -- Detect tabstop and shiftwidth automatically
-  { 'nvim-tree/nvim-web-devicons', event = { 'BufRead', 'BufNewFile' } },
+  { 'nvim-tree/nvim-web-devicons', lazy = true },
   { 'windwp/nvim-autopairs', event = 'InsertEnter' }, -- Autopairs, integrates with both cmp and treesitter
   { 'lukas-reineke/indent-blankline.nvim', event = { 'BufRead', 'BufNewFile' } }, -- Add indentation guides even on blank lines
   {
     'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
-    event = 'ModeChanged',
+    keys = 'gc',
     dependencies = { 'JoosepAlviste/nvim-ts-context-commentstring' },
   },
 
   -- Autocompletion (Cmp)
   {
     'hrsh7th/nvim-cmp', -- The completion plugins
-    event = { 'InsertEnter', 'CmdlineEnter' },
-    -- module = 'cmp',
+    event = 'InsertEnter',
     dependencies = {
-      { 'hrsh7th/cmp-nvim-lsp', event = { 'InsertEnter', 'CmdlineEnter' } },
-      { 'hrsh7th/cmp-buffer', event = { 'InsertEnter', 'CmdlineEnter' } }, -- buffer completions
-      { 'hrsh7th/cmp-path', event = { 'InsertEnter', 'CmdlineEnter' } }, -- path completions
+      { 'hrsh7th/cmp-nvim-lsp' },
+      { 'hrsh7th/cmp-buffer' }, -- buffer completions
+      { 'hrsh7th/cmp-path' }, -- path completions
       { 'hrsh7th/cmp-cmdline', event = 'CmdlineEnter' }, -- command completions
-      { 'L3MON4D3/LuaSnip', event = 'InsertEnter' }, -- snippet engine
-      { 'saadparwaiz1/cmp_luasnip', event = 'InsertEnter' }, -- snippet completions
-      { 'rafamadriz/friendly-snippets', event = 'InsertEnter' }, -- a bunch of snippets to use
-      { 'hrsh7th/cmp-nvim-lua', event = 'InsertEnter' },
+      { 'L3MON4D3/LuaSnip' }, -- snippet engine
+      { 'saadparwaiz1/cmp_luasnip' }, -- snippet completions
+      { 'rafamadriz/friendly-snippets' }, -- a bunch of snippets to use
+      { 'hrsh7th/cmp-nvim-lua' },
     },
   },
 
@@ -37,8 +36,8 @@ return {
   {
     'neovim/nvim-lspconfig', -- enable LSP
     dependencies = {
-      { 'williamboman/mason.nvim' }, -- simple to use language server installer
-      { 'williamboman/mason-lspconfig.nvim' }, -- Useful status updates for LSP
+      { 'williamboman/mason.nvim', event = 'LspAttach' }, -- simple to use language server installer
+      { 'williamboman/mason-lspconfig.nvim', event = 'LspAttach' }, -- Useful status updates for LSP
       { 'j-hui/fidget.nvim', event = 'LspAttach', opts = true }, -- Useful status updates for LSP
     },
   },
@@ -86,6 +85,5 @@ return {
   --
   -- { import = 'custom.plugins' },
 
-  -- { import = 'test.plugins' }, -- Enable to automatically import test plugins
-  {},
+  -- { import = 'test.plugins' }, -- Enable to automatically import test plugins,
 }

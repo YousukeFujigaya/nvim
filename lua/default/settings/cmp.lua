@@ -19,28 +19,29 @@ end
 
 --   פּ ﯟ   some other good icons
 local kind_icons = {
-  Text = '',
-  Method = 'm',
+  Text = '󰦨',
+  Method = '',
   Function = '',
-  Constructor = '',
-  Field = '',
-  Variable = '',
-  Class = '',
+  Constructor = '',
+  Field = 'ﰠ',
+  Variable = '',
+  Class = 'ﴯ',
   Interface = '',
   Module = '',
   Property = '',
-  Unit = '',
+  Unit = '塞',
   Value = '',
   Enum = '',
   Keyword = '',
-  Snippet = '',
+  Snippet = '',
+  -- Snippet = '',
   Color = '',
   File = '',
   Reference = '',
   Folder = '',
   EnumMember = '',
-  Constant = '',
-  Struct = '',
+  Constant = '',
+  Struct = 'פּ',
   Event = '',
   Operator = '',
   TypeParameter = '',
@@ -59,8 +60,8 @@ cmp.setup {
     ['<C-j>'] = cmp.mapping.select_next_item(),
     ['<C-p>'] = cmp.mapping.select_prev_item(),
     ['<C-n>'] = cmp.mapping.select_next_item(),
-    -- ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-    -- ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-f>'] = cmp.mapping.scroll_docs(4),
     -- ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
     -- ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
     -- ['<C-Space>'] = cmp.mapping(cmp.mapping.complete() { 'i', 'c' }),
@@ -120,11 +121,12 @@ cmp.setup {
   }),
 
   formatting = {
-    fields = { 'kind', 'abbr', 'menu' },
+    fields = { 'abbr', 'kind', 'menu' },
     format = function(entry, vim_item)
       -- Kind icons
-      vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
-      -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+      -- vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
+      vim_item.kind = string.format('  %s %s  ', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+
       vim_item.menu = ({
         nvim_lsp = '[LSP]',
         luasnip = '[Snippet]',
