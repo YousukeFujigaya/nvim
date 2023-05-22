@@ -45,7 +45,7 @@ return {
   -- Telescope
   {
     'nvim-telescope/telescope.nvim',
-    version = '*',
+    branch = '0.1.x',
     cmd = 'Telescope',
     dependencies = {
       { -- Fuzzy Finder Algorithm which requires local dependencies to be built.

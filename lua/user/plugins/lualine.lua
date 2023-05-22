@@ -11,7 +11,7 @@ return {
     local colors = {
       bg = '#282828',
       fg = '#dfdfe0',
-      black = '#141313',
+      -- black = '#141313',
       green = '#25be6a', -- or #42BE65
       yellow = '#ffff5f',
       blue = '#78A9FF',
@@ -134,7 +134,7 @@ return {
           ['!'] = colors.red,
           t = colors.blue,
         }
-        return { fg = mode_color[vim.api.nvim_get_mode().mode], bg = colors.black }
+        return { fg = mode_color[vim.api.nvim_get_mode().mode], bg = colors.bg }
       end,
       padding = { left = 2, right = 2 },
     }
@@ -161,7 +161,7 @@ return {
       },
       update_in_insert = false,
       always_visible = true,
-      color = { bg = colors.black },
+      color = { bg = colors.bg },
       padding = { left = 0, right = 1 },
     }
 
