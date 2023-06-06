@@ -38,12 +38,18 @@ keymap({ 'n', 'v' }, '<Space>', '<Nop>')
 -- Remap for dealing with word wrap
 keymap('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true })
 keymap('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true })
+keymap('n', '<Up>', "v:count == 0 ? 'gk' : 'k'", { expr = true })
+keymap('n', '<Down>', "v:count == 0 ? 'gj' : 'j'", { expr = true })
 
 -- Move to active buffer window
 keymap('', 'sh', '<C-w>h')
 keymap('', 'sj', '<C-w>j')
 keymap('', 'sk', '<C-w>k')
 keymap('', 'sl', '<C-w>l')
+keymap('n', 'sH', '<C-w>H')
+keymap('n', 'sJ', '<C-w>J')
+keymap('n', 'sK', '<C-w>K')
+keymap('n', 'sL', '<C-w>L')
 -- keymap('n', '<C-h>', '<C-w>h')
 -- keymap('n', '<C-j>', '<C-w>j') -- TODO: conflict
 -- keymap('n', '<C-k>', '<C-w>k') -- TODO: conflict
@@ -54,8 +60,8 @@ keymap('', 'sl', '<C-w>l')
 -- keymap('n', '<M-l>', '<C-w>l')
 
 -- Split view
-keymap('n', 'ss', ':split<Return><C-w>w', { desc = 'Split window horizontally' })
-keymap('n', 'sv', ':vsplit<Return><C-w>w', { desc = 'Split window vertically' })
+keymap('n', '<C-_>', ':split<Return><C-w>w', { desc = 'Split window horizontally' })
+keymap('n', '<C-\\>', ':vsplit<Return><C-w>w', { desc = 'Split window vertically' })
 
 -- Navigate buffer tabs
 keymap('n', '<S-l>', ':bnext<CR>')
@@ -78,9 +84,6 @@ keymap('n', '<M-h>', ':vertical resize -2<CR>')
 -- Insert Mode --
 -- Press jk fast to exit insert mode
 keymap('i', 'jj', '<ESC>')
-keymap('i', 'jk', '<ESC>')
-keymap('i', 'kk', '<ESC>')
-keymap('i', 'kj', '<ESC>')
 
 -- -- Visual --
 -- -- Stay in indent mode
