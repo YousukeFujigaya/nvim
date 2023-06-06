@@ -56,7 +56,7 @@ vim.opt.sidescrolloff = 8 -- minimal number of screen columns either side of cur
 -----------------------------------------------------------------------
 
 -- float-transparent
-vim.opt.winblend = 30
+vim.opt.winblend = 10
 vim.opt.pumblend = 30
 
 vim.opt.ambiwidth = 'single'
