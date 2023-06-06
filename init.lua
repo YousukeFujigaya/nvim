@@ -4,7 +4,7 @@
 require 'user.settings.options'
 require 'user.settings.keymaps' -- NOTE: Must set before plugins are required
 -- Colorscheme ------------------------------------------------------------------------------
-local user_colorscheme = require('user.colorscheme').nightfox.carbonfox
+local user_colorscheme = 'carbonfox'
 ---------------------------------------------------------------------------------------------
 -- Install package manager ------------------------------------------------------------------
 --    https://github.com/folke/lazy.nvim
