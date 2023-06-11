@@ -86,13 +86,13 @@ return {
     end
 
     -- Time component
-    local Ctime = require('lualine.component'):extend()
-    Ctime.init = function(self, options)
-      Ctime.super.init(self, options)
-    end
-    Ctime.update_status = function()
-      return os.date('%H:%M', os.time())
-    end
+    -- local Ctime = require('lualine.component'):extend()
+    -- Ctime.init = function(self, options)
+    --   Ctime.super.init(self, options)
+    -- end
+    -- Ctime.update_status = function()
+    --   return os.date('%H:%M', os.time())
+    -- end
 
     ins_left {
       -- mode component
@@ -261,10 +261,10 @@ return {
       icon = nil,
     }
 
-    ins_right {
-      icon = '',
-      Ctime,
-    }
+    -- ins_right {
+    --   icon = '',
+    --   Ctime,
+    -- }
 
     -- ins_right {
     --   'location',
