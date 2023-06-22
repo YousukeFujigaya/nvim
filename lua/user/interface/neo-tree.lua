@@ -2,7 +2,7 @@ return {
   'nvim-neo-tree/neo-tree.nvim',
   version = '*',
   -- event = 'CmdlineEnter',
-  key = '<leader>e',
+  keys = { { '<leader>e', '<cmd>NeoTreeFocusToggle<CR>', desc = 'Explorer' } },
   cmd = 'NeoTreeFocusToggle',
   dependencies = {
     { 'nvim-lua/plenary.nvim' },

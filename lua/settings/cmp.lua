@@ -10,7 +10,8 @@ if not snip_status_ok then
   return
 end
 
--- require('luasnip/loaders/from_vscode').lazy_load()
+require('luasnip/loaders/from_vscode').lazy_load()
+luasnip.config.setup {}
 
 local check_backspace = function()
   local col = vim.fn.col '.' - 1
@@ -20,31 +21,30 @@ end
 --   פּ ﯟ   some other good icons
 local kind_icons = {
   Text = '󰦨',
-  Method = '',
-  Function = '',
+  Method = '󰆧',
+  Function = '󰊕',
   Constructor = '',
-  Field = 'ﰠ',
-  Variable = '',
-  Class = 'ﴯ',
+  Field = '󰜢',
+  Variable = '󰀫',
+  Class = '󰠱',
   Interface = '',
   Module = '',
   Property = '',
-  Unit = '塞',
-  Value = '',
+  Unit = '󰑭',
+  Value = '󰎠',
   Enum = '',
-  Keyword = '',
+  Keyword = '󰌋',
   Snippet = '',
-  -- Snippet = '',
-  Color = '',
-  File = '',
+  Color = '󰏘',
+  File = '󰈙',
   Reference = '',
-  Folder = '',
+  Folder = '󰉋',
   EnumMember = '',
-  Constant = '',
-  Struct = 'פּ',
+  Constant = '󰏿',
+  Struct = '󰙅',
   Event = '',
-  Operator = '',
-  TypeParameter = '',
+  Operator = '󰆕',
+  TypeParameter = '',
 }
 -- find more here: https://www.nerdfonts.com/cheat-sheet
 
