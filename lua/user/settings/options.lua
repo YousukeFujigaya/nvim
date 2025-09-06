@@ -1,4 +1,4 @@
-vim.o.encofing = 'utf-8'
+vim.o.encoding = 'utf-8'
 vim.scriptencoding = 'utf-8'
 vim.o.fileencoding = 'utf-8'
 vim.opt.shell = 'zsh'

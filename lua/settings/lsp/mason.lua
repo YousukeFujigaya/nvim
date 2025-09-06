@@ -82,14 +82,13 @@ end
 mason_lspconfig.setup {
   ensure_installed = vim.tbl_keys(servers),
   automatic_installation = true,
-}
-
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    require('lspconfig')[server_name].setup {
-      capabilities = require('settings.lsp.handlers').capabilities,
-      on_attach = require('settings.lsp.handlers').on_attach,
-      settings = servers[server_name],
-    }
-  end,
+  handlers = {
+    function(server_name)
+      require('lspconfig')[server_name].setup {
+        capabilities = require('settings.lsp.handlers').capabilities,
+        on_attach = require('settings.lsp.handlers').on_attach,
+        settings = servers[server_name],
+      }
+    end,
+  },
 }

@@ -10,7 +10,7 @@ if not snip_status_ok then
   return
 end
 
-require('luasnip/loaders/from_vscode').lazy_load()
+require('luasnip.loaders.from_vscode').lazy_load()
 luasnip.config.setup {}
 
 local check_backspace = function()
@@ -102,24 +102,6 @@ cmp.setup {
     end, { 'i', 's' }),
   },
 
-  cmp.setup.cmdline({ '/', '?' }, {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'nvim_lsp_document_symbol' },
-    }, {
-      { name = 'buffer' },
-    }),
-  }),
-
-  cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
-    sources = cmp.config.sources({
-      { name = 'path' },
-    }, {
-      { name = 'cmdline', keyword_length = 2 },
-    }),
-  }),
-
   formatting = {
     fields = { 'abbr', 'kind', 'menu' },
     format = function(entry, vim_item)
@@ -152,3 +134,21 @@ cmp.setup {
     native_menu = false,
   },
 }
+
+cmp.setup.cmdline({ '/', '?' }, {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp_document_symbol' },
+  }, {
+    { name = 'buffer' },
+  }),
+})
+
+cmp.setup.cmdline(':', {
+  mapping = cmp.mapping.preset.cmdline(),
+  sources = cmp.config.sources({
+    { name = 'path' },
+  }, {
+    { name = 'cmdline', keyword_length = 2 },
+  }),
+})

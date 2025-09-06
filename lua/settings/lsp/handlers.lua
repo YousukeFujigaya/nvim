@@ -7,8 +7,8 @@ end
 
 -- Define capabilities
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
--- Enable snipettSuport
-M.capabilities.textDocument.completion.completionItem.snipettSuport = true
+-- Enable snippetSupport
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 M.capabilities = cmp_nvim_lsp.default_capabilities(M.capabilities)
 
