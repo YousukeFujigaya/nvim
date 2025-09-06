@@ -13,5 +13,5 @@ lspconfig.lua_ls.setup {
   },
 }
 
-require 'default.settings.lsp.mason'
-require('default.settings.lsp.handlers').setup()
+require 'settings.lsp.mason'
+require('settings.lsp.handlers').setup()

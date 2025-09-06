@@ -1,6 +1,4 @@
--- [[ Keymaps ]]
 -- Set <space> as the leader key
--- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -76,6 +74,15 @@ keymap('n', '<M-Up>', ':resize -2<CR>')
 keymap('n', '<M-Down>', ':resize +2<CR>')
 keymap('n', '<M-l>', ':vertical resize +2<CR>')
 keymap('n', '<M-h>', ':vertical resize -2<CR>')
+
+-- fzf.vim
+keymap('n', '<C-p>', ':Files<CR>')
+keymap('n', '<C-f>', ':Rg<CR>')
+keymap('n', '<C-g>', ':Commits<CR>')
+
+-- lf.vim
+keymap('', '<C-t>', ':Lf<CR>')
+keymap('', '<S-t>', ':LfWorkingDirectory<CR>')
 
 -- -- Move text up and down
 -- keymap('n', '<M-j>', '<Esc>:m .+1<CR>==gi')

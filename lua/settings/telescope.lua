@@ -29,10 +29,10 @@ telescope.setup {
         ['<C-x>'] = actions.select_horizontal,
         ['<C-v>'] = actions.select_vertical,
         ['<C-t>'] = actions.select_tab,
-        -- ["<C-u>"] = actions.preview_scrolling_up,
-        -- ["<C-d>"] = actions.preview_scrolling_down,
-        ['<C-u>'] = false,
-        ['<C-d>'] = false,
+        ['<C-u>'] = actions.preview_scrolling_up,
+        ['<C-d>'] = actions.preview_scrolling_down,
+        -- ['<C-u>'] = false,
+        -- ['<C-d>'] = false,
         ['<PageUp>'] = actions.results_scrolling_up,
         ['<PageDown>'] = actions.results_scrolling_down,
         ['<Tab>'] = actions.toggle_selection + actions.move_selection_worse,
@@ -97,14 +97,13 @@ telescope.setup {
 -- Extensions Load
 pcall(telescope.load_extention, 'fzf') -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, 'telescope-live-grep-args')
-pcall(telescope.load_extension, 'projects')
 
 -- See `:help telescope.builtin`
 vim.keymap.set('n', '<leader>?', builtin.oldfiles, { desc = '[?] Find recently opened files' })
 vim.keymap.set('n', '<leader><space>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 vim.keymap.set('n', '<leader>/', function()
   -- You can pass additional configuration to telescope to change theme, layout, etc.
-  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_ivy {
     winblend = 10,
     previewer = false,
   })
@@ -122,4 +121,5 @@ vim.keymap.set('n', '<leader>sw', builtin.grep_string, { desc = '[S]earch curren
 -- vim.keymap.set('n', '<leader>sg', builtin.live_grep, { desc = '[S]earch by [G]rep' })
 vim.keymap.set('n', '<leader>sg', telescope.extensions.live_grep_args.live_grep_args, { desc = '[S]earch by rip[G]rep Args' })
 vim.keymap.set('n', '<leader>sd', builtin.diagnostics, { desc = '[S]earch [D]iagnostics' })
+vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })
 vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
